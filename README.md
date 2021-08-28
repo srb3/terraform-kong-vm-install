@@ -1,7 +1,7 @@
 # terraform-kong-vm-install
 
 A terraform module for installing Kong gateway
-onto virtual machines or bear metal servers.
+onto virtual machines or bare metal servers.
 Pass the module the address and ssh credentials
 of the target you want to install Kong on.
 Under the hood this module calls the Ansible role
