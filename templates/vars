@@ -1,0 +1,11 @@
+%{ for k,v in config }
+${k}: "${v}"
+%{ endfor }
+%{ if cluster_cert != "" }
+cluster_cert: |
+  ${indent(2, cluster_cert)}
+%{ endif }
+%{ if cluster_cert_key != "" }
+cluster_cert_key: |
+  ${indent(2, cluster_cert_key)}
+%{ endif }

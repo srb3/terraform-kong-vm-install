@@ -1,0 +1,16 @@
+- become: yes
+  hosts: all
+  name: copy-certs 
+  tasks:
+    - name: Copy each cert 
+      copy:
+        src: "/tmp/certs/tls.crt"
+        dest: "/etc/secrets/kong-cluster-certs"
+        owner: "root"
+        mode: 0600
+    - name: Copy each key
+      copy:
+        src: "/tmp/certs/tls.key"
+        dest: "/etc/secrets/kong-cluster-certs"
+        owner: "root"
+        mode: 0600
