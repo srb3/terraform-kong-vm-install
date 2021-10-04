@@ -27,6 +27,7 @@ locals {
   kong_config = {
     "role"                        = "control_plane"
     "lua_ssl_trusted_certificate" = "/etc/secrets/kong-cluster/tls.crt"
+    "dbless_mode"                 = "True"
     "cluster_mtls"                = "shared"
     "log_level"                   = "debug"
     "admin_access_log"            = "logs/admin_access.log"
@@ -50,6 +51,9 @@ locals {
     "vitals_strategy"             = "database"
     "vitals"                      = "off"
   }
+  extra_vars = {
+    "kong_package_url" = "https://download.konghq.com/gateway-2.x-centos-8/Packages/k/kong-enterprise-edition-2.5.1.0.el8.noarch.rpm"
+  }
 }
 
 module "kong-install" {
@@ -60,4 +64,5 @@ module "kong-install" {
   cluster_cert         = module.tls.cert.kong-cluster.cert_pem
   cluster_cert_key     = module.tls.key.kong-cluster.private_key_pem
   kong_config          = local.kong_config
+  extra_vars           = local.extra_vars
 }
