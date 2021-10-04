@@ -22,8 +22,9 @@ locals {
 }
 
 module "role" {
-  source  = "srb3/role/ansible"
-  version = "0.0.4"
-  roles   = local.roles
-  hosts   = local.hosts
+  source     = "srb3/role/ansible"
+  version    = "0.0.5"
+  roles      = local.roles
+  hosts      = local.hosts
+  extra_vars = var.extra_vars
 }

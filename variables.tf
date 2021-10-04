@@ -30,3 +30,9 @@ variable "ssh_user_private_key" {
   description = "The ssh user private key of the kong instance"
   type        = string
 }
+
+variable "extra_vars" {
+  description = "A map of extra variables to pass to the ansible playbook command"
+  type        = map(any)
+  default     = {}
+}
